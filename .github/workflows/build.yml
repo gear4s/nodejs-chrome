@@ -2,12 +2,11 @@
 
 name: build-one
 on:
-  workflow_call:
-    secrets:
-      DOCKERHUB_USERNAME:
-        required: true
-      DOCKERHUB_TOKEN:
-        required: true
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '25 4 * * 4'
 
 env:
   IMAGE_REPOSITORY: nodejs-chrome
