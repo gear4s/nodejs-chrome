@@ -31,9 +31,10 @@ RUN apt-get update \
     libxss1 \
     libxtst6 \
     xauth \
-    xvfb \
+    xvfb
+
  # Chrome instalation 
-RUN wget  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
   && apt-get install -y ./google-chrome-stable_current_amd64.deb \
   && rm google-chrome-stable_current_amd64.deb
 
