@@ -68,7 +68,7 @@ jobs:
           CHROMIUM_VERSION_REGEXP: 'Chromium ([0-9]+)\.'
           CHROMEDRIVER_VERSION_REGEXP: 'ChromeDriver ([0-9]+)\.'
         run: |
-          CURRENT_CHROMIUM_VERSION=$(docker container run --rm --entrypoint '' ${IMAGE_NAME} chromium-browser --version)
+          CURRENT_CHROMIUM_VERSION=$(docker container run --rm --entrypoint '' ${IMAGE_NAME} google-chrome --version)
           if [[ ${CURRENT_CHROMIUM_VERSION} =~ ${CHROMIUM_VERSION_REGEXP} ]]; then
             echo "ℹ Successfully extracted Chromium major version of ${BASH_REMATCH[1]} from '${CURRENT_CHROMIUM_VERSION}'"
           else
