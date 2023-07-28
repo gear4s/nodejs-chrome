@@ -1,19 +1,41 @@
 FROM node:20-slim as node
 
-# Installs latest Chromium package.
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y wget libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \
-    && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && (dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install; rm google-chrome-stable_current_amd64.deb; apt-get clean; rm -rf /var/lib/apt/lists/* ) \
-    && mv /usr/bin/google-chrome /usr/bin/google-chrome.real  \
-    && mv /opt/google/chrome/chrome /opt/google/chrome/google-chrome.real  \
-    && rm /etc/alternatives/google-chrome \
-    && ln -s /opt/google/chrome/google-chrome.real /etc/alternatives/google-chrome \
-    && ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome \
-    && ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser \
-    && ln -s /usr/lib/x86_64-linux-gnu/libOSMesa.so.6 /opt/google/chrome/libosmesa.so
-
+RUN apt-get update
+  && apt-get install -y \
+    fonts-liberation \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
+    libatspi2.0-0 \
+    libcups2 \
+    libdbus-1-3 \
+    libdrm2 \
+    libgbm1 \
+    libgtk-3-0 \
+    libnspr4 \
+    libnss3 \
+    libwayland-client0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxkbcommon0 \
+    libxrandr2 \
+    xdg-utils \
+    libu2f-udev \
+    libvulkan1 \
+    wget \
+    libgtk2.0-0 \
+    libgbm-dev \
+    libnotify-dev \
+    libgconf-2-4 \
+    libxss1 \
+    libxtst6 \
+    xauth \
+    xvfb \
+ # Chrome instalation 
+RUN curl -LO  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+  && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+  && rm google-chrome-stable_current_amd64.deb
 
 COPY local.conf /etc/fonts/local.conf
 
