@@ -65,7 +65,7 @@ jobs:
         id: tag
         env:
           IMAGE_NAME: aquelle1/${{ env.IMAGE_REPOSITORY }}:latest
-          CHROMIUM_VERSION_REGEXP: 'Chromium ([0-9]+)\.'
+          CHROMIUM_VERSION_REGEXP: 'Google Chrome ([0-9]+)\.'
           CHROMEDRIVER_VERSION_REGEXP: 'ChromeDriver ([0-9]+)\.'
         run: |
           CURRENT_CHROMIUM_VERSION=$(docker container run --rm --entrypoint '' ${IMAGE_NAME} google-chrome --version)
