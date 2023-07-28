@@ -19,7 +19,7 @@ COPY local.conf /etc/fonts/local.conf
 
 # Add Chrome as a user
 RUN mkdir -p /usr/src/app \
-    && adduser -D chrome \
+    && adduser --disabled-password chrome \
     && chown -R chrome:chrome /usr/src/app
 # Run Chrome as non-privileged
 USER chrome
