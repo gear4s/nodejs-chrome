@@ -1,6 +1,6 @@
 FROM node:20-slim as node
 
-RUN apt-get update
+RUN apt-get update \
   && apt-get install -y \
     fonts-liberation \
     libasound2 \
