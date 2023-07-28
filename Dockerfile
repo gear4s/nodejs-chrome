@@ -12,6 +12,7 @@ RUN apk update \
       ca-certificates \
       ttf-freefont \
       font-noto-emoji \
+      xvfb \
     && apk add --no-cache \
       --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
       font-wqy-zenhei
