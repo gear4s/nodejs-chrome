@@ -48,8 +48,7 @@ RUN mkdir -p /usr/src/app \
 USER chrome
 WORKDIR /usr/src/app
 
-ENV CHROME_BIN=/usr/bin/chromium-browser \
-    CHROME_PATH=/usr/lib/chromium/
+ENV CHROME_BIN=/usr/bin/google-chrome-stable
 
 # Autorun chrome headless
 ENV CHROMIUM_FLAGS="--disable-software-rasterizer --disable-dev-shm-usage"
