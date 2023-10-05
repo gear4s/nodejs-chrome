@@ -9,10 +9,22 @@ on:
     - cron: '25 4 * * 4'
 
 jobs:
+  node-18:
+    uses: ./.github/workflows/build-docker-image.yml
+    with:
+      node-docker-version: 18
+    secrets: inherit
+
   node-18-slim:
     uses: ./.github/workflows/build-docker-image.yml
     with:
       node-docker-version: 18-slim
+    secrets: inherit
+
+  node-20:
+    uses: ./.github/workflows/build-docker-image.yml
+    with:
+      node-docker-version: 20
     secrets: inherit
 
   node-20-slim:
