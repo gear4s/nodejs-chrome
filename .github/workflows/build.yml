@@ -10,11 +10,11 @@ on:
 
 jobs:
   node-18-slim:
-    uses: ./.github/workflows/build-docker-image.yml@main
+    uses: ./.github/workflows/build-docker-image.yml
     with:
       node-docker-version: 18-slim
 
   node-20-slim:
-    uses: ./.github/workflows/build-docker-image.yml@main
+    uses: ./.github/workflows/build-docker-image.yml
     with:
       node-docker-version: 20-slim
