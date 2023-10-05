@@ -1,4 +1,5 @@
-FROM node:20-slim as node
+ARG  BASE_IMAGE_VERSION=20-slim
+FROM node:${BASE_IMAGE_VERSION} as node
 
 RUN apt-get update \
   && apt-get install -y \
