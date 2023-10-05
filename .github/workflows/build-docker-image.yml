@@ -51,10 +51,12 @@ jobs:
           ./test.sh
 
       - name: Export image artifact
+        continue-on-error: true
         run: |
           docker image save aquelle1/${{ env.IMAGE_REPOSITORY }}:latest | gzip > ${{ env.IMAGE_REPOSITORY }}-latest.tar.gz
 
       - name: Upload image artifact
+        continue-on-error: true
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.IMAGE_REPOSITORY }}-latest
