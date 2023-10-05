@@ -9,15 +9,12 @@ on:
     - cron: '25 4 * * 4'
 
 jobs:
-  node:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build with base image node:18-slim
-        uses: gear4s/nodejs-chrome/.github/workflows/build-docker-image.yml@main
-        with:
-          node-docker-version: 18-slim
+  node-18-slim:
+    uses: ./.github/workflows/build-docker-image.yml@main
+    with:
+      node-docker-version: 18-slim
 
-      - name: Build with base image node:20-slim
-        uses: gear4s/nodejs-chrome/.github/workflows/build-docker-image.yml@main
-        with:
-          node-docker-version: 20-slim
+  node-20-slim:
+    uses: ./.github/workflows/build-docker-image.yml@main
+    with:
+      node-docker-version: 20-slim
