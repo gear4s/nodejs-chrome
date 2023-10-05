@@ -99,7 +99,8 @@ jobs:
         env:
           BASE_IMAGE_VERSION: ${{ inputs.node-docker-version }}
           IMAGE_NAME: ${{ env.IMAGE_REPOSITORY }}:latest
-          IMAGE_VERSIONED_NAME: ${{ env.IMAGE_REPOSITORY }}:${{ inputs.node-docker-version }}-${{ steps.tag.outputs.value }}
+          IMAGE_PART_VERSIONED_NAME: ${{ env.IMAGE_REPOSITORY }}:${{ inputs.node-docker-version }}-latest
+          IMAGE_FULL_VERSIONED_NAME: ${{ env.IMAGE_REPOSITORY }}:${{ inputs.node-docker-version }}-${{ steps.tag.outputs.value }}
         uses: docker/build-push-action@v3
         with:
           context: .
@@ -107,5 +108,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
             aquelle1/${{ env.IMAGE_NAME }}
-            aquelle1/${{ env.IMAGE_VERSIONED_NAME }}
+            aquelle1/${{ env.IMAGE_PART_VERSIONED_NAME }}
+            aquelle1/${{ env.IMAGE_FULL_VERSIONED_NAME }}
           push: true
